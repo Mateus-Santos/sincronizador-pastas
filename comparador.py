@@ -1,5 +1,6 @@
 import filecmp
 import shutil
+import os
 
 # Caminho das pastas.
 
@@ -21,20 +22,23 @@ print("Arquivos exclusivos em servidor:", arquivos_exclusivos_servidor)
 
 print("Arquivos exclusivos em Estudante:", arquivos_exclusivos_estudante)
 
+# Use a função shutil.copy para copiar o arquivo
+
+if(arquivos_exclusivos_servidor != None):
+    for arquivo in arquivos_exclusivos_servidor:
+        print(arquivo)
+        shutil.copy(servidor+'/'+arquivo, estudante)
+
+if(arquivos_exclusivos_estudante != None):
+    for arquivo in arquivos_exclusivos_estudante:
+        os.remove(estudante+'/'+arquivo)
+        print(f'O arquivo {arquivo} foi copiado para {estudante}')
+
 lab2 = 48
 lab1 = 35
 lab3 = 12
-
-# Use a função shutil.copy para copiar o arquivo
-
-for item in arquivos_exclusivos_servidor:
-    print(item)
-    shutil.copy(servidor+'/'+item, estudante)
-    print(f'O arquivo {item} foi copiado para {estudante}')
 # Se você quiser mover o arquivo em vez de copiá-lo, use shutil.move
 # shutil.move(origem, destino)
-
-
 
 
 
